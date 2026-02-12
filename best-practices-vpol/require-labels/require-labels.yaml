@@ -1,32 +1,39 @@
-apiVersion: policies.kyverno.io/v1alpha1
+apiVersion: policies.kyverno.io/v1
 kind: ValidatingPolicy
 metadata:
-  name: require-labels
   annotations:
-    policies.kyverno.io/title: Require Labels in VPOL
-    policies.kyverno.io/category: Best Practices in VPOL
-    policies.kyverno.io/minversion: 1.14.0
-    kyverno.io/kubernetes-version: "1.30"
-    policies.kyverno.io/severity: medium
-    policies.kyverno.io/subject: Pod, Label
+    policies.kyverno.io/category: Best Practices
     policies.kyverno.io/description: >-
-      Define and use labels that identify semantic attributes of your application or Deployment.
-      A common set of labels allows tools to work collaboratively, describing objects in a common manner that
-      all tools can understand. The recommended labels describe applications in a way that can be
-      queried. This policy validates that the label `app.kubernetes.io/name` is specified with some value.
+      Enforce the presence of required labels that identify semantic attributes
+      of applications or Deployments. Specifically, ensure that the standard
+      label `app.kubernetes.io/name` is present on Pods with a non-empty value
+      to enable consistent tooling and querying capabilities.
+    policies.kyverno.io/severity: medium
+    policies.kyverno.io/title: Require Labels
+  name: require-labels
 spec:
-  validationActions: [Audit]
-  evaluation: 
-     background: 
-           enabled: true
+  evaluation:
+    background:
+      enabled: true
   matchConstraints:
-        resourceRules:
-          - apiGroups: ['']
-            apiVersions: [v1]
-            operations: [CREATE, UPDATE]
-            resources: [pods]
+    resourceRules:
+      - apiGroups:
+          - ''
+        apiVersions:
+          - v1
+        operations:
+          - CREATE
+          - UPDATE
+        resources:
+          - pods
+  validationActions:
+    - Audit
   validations:
-          - expression: >-
-              object.metadata.?labels[?'app.kubernetes.io/name'].orValue('') != ""
-            message: "The label `app.kubernetes.io/name` is required." 
-
+    - expression: >-
+        has(object.metadata.labels) && 'app.kubernetes.io/name' in
+        object.metadata.labels &&
+        object.metadata.labels['app.kubernetes.io/name'] != ''
+      messageExpression: >-
+        'Pod ' + object.metadata.name + ' must have the label
+        app.kubernetes.io/name with a non-empty value. Found labels: ' +
+        (has(object.metadata.labels) ? string(object.metadata.labels) : 'none')

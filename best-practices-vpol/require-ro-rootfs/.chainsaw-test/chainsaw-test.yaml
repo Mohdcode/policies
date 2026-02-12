@@ -12,12 +12,13 @@ spec:
         file: ../require-ro-rootfs.yaml
     - patch:
         resource:
-          apiVersion: policies.kyverno.io/v1alpha1
+          apiVersion: policies.kyverno.io/v1
           kind: ValidatingPolicy
           metadata:
             name: require-ro-rootfs
           spec:
-            validationActions: [Deny]
+            validationActions:
+              - Deny
     - assert:
         file: policy-ready.yaml
   - name: step-02
@@ -46,4 +47,3 @@ spec:
         - check:
             ($error != null): true
         file: bad-podcontrollers.yaml
-

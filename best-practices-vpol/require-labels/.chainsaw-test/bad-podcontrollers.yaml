@@ -33,4 +33,3 @@ spec:
           containers:
           - name: busybox
             image: ghcr.io/kyverno/test-busybox:1.35
-

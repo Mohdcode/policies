@@ -7,17 +7,16 @@ policies:
 resources:
 - resource.yaml
 results:
-- isValidatingPolicy: true
-  kind: Service
+- kind: Service
   policy: restrict-nodeport
   resources:
   - badservice01
   result: fail
-- isValidatingPolicy: true 
-  kind: Service
+  isValidatingPolicy: true
+- kind: Service
   policy: restrict-nodeport
   resources:
   - goodservice01
   - goodservice02
   result: pass
-
+  isValidatingPolicy: true

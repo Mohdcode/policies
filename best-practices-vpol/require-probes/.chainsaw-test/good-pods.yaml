@@ -47,4 +47,3 @@ spec:
     startupProbe:
       grpc:
         port: 8888
-

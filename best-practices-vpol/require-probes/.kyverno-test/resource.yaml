@@ -108,4 +108,3 @@ spec:
       periodSeconds: 10
   - name: nginx
     image: nginx:latest
-

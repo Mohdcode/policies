@@ -7,18 +7,17 @@ policies:
 resources:
 - resource.yaml
 results:
-- isValidatingPolicy: true
-  kind: Pod
+- kind: Pod
   policy: require-labels
   resources:
   - badpod01
   - badpod02
   result: fail
-- isValidatingPolicy: true
-  kind: Pod
+  isValidatingPolicy: true
+- kind: Pod
   policy: require-labels
   resources:
   - goodpod01
   - goodpod02
   result: pass
-
+  isValidatingPolicy: true

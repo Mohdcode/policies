@@ -7,15 +7,13 @@ policies:
 resources:
 - resource.yaml
 results:
-- isValidatingPolicy: true
-  kind: Pod
+- kind: Pod
   policy: require-pod-probes
   resources:
   - badpod01
   - badpod02
   result: fail
-- isValidatingPolicy: true
-  kind: Pod
+- kind: Pod
   policy: require-pod-probes
   resources:
   - goodpod01
@@ -23,4 +21,3 @@ results:
   - goodpod03
   - goodpod04
   result: pass
-

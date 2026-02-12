@@ -11,4 +11,3 @@ spec:
       targetPort: 9376
   externalIPs:
     - 1.2.3.4
-

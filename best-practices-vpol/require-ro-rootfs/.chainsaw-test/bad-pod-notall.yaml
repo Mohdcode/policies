@@ -23,4 +23,3 @@ spec:
       readOnlyRootFilesystem: true
   - name: busybox-again
     image: ghcr.io/kyverno/test-busybox:1.35
-

@@ -1,6 +1,7 @@
-name: require-probes-VPOL
+name: require-probes
 version: 1.0.0
-displayName: Require Pod Probes in VPOL
+displayName: Require Pod Probes
+createdAt: "2023-04-10T19:47:15.000Z"
 description: >-
   Liveness and readiness probes need to be configured to correctly manage a Pod's lifecycle during deployments, restarts, and upgrades. For each Pod, a periodic `livenessProbe` is performed by the kubelet to determine if the Pod's containers are running or need to be restarted. A `readinessProbe` is used by Services and Deployments to determine if the Pod is ready to receive network traffic. This policy validates that all containers have one of livenessProbe, readinessProbe, or startupProbe defined.
 install: |-
@@ -11,14 +12,11 @@ keywords:
   - kyverno
   - Best Practices
   - EKS Best Practices
-  - VPOL
 readme: |
   Liveness and readiness probes need to be configured to correctly manage a Pod's lifecycle during deployments, restarts, and upgrades. For each Pod, a periodic `livenessProbe` is performed by the kubelet to determine if the Pod's containers are running or need to be restarted. A `readinessProbe` is used by Services and Deployments to determine if the Pod is ready to receive network traffic. This policy validates that all containers have one of livenessProbe, readinessProbe, or startupProbe defined.
   
   Refer to the documentation for more details on Kyverno annotations: https://artifacthub.io/docs/topics/annotations/kyverno/
 annotations:
-  kyverno/category: "Best Practices, EKS Best Practices in VPOL"
-  kyverno/kubernetesVersion: "1.30"
+  kyverno/category: "Best Practices, EKS Best Practices"
   kyverno/subject: "Pod"
-digest: c628302eb8579102ba12edd1238d716aeea17bf3a07649dca710a73c5bc538aa
-createdAt: "2025-05-05T13:19:13Z"
+digest: bb39d13e91397d65e435f9d89e3515b5d1544911afc493b47aea82b9424e134f

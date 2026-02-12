@@ -58,4 +58,3 @@ spec:
                 cpu: "100m"
               limits:
                 memory: "100Mi"
-

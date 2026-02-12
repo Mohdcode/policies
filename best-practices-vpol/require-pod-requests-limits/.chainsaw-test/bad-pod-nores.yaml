@@ -35,4 +35,3 @@ spec:
         memory: "256Mi"
   - name: busybox-again
     image: ghcr.io/kyverno/test-busybox:1.35
-
