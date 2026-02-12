@@ -19,5 +19,5 @@ annotations:
   kyverno/category: "Best Practices in VPOL"
   kyverno/kubernetesVersion: "1.30"
   kyverno/subject: "Service"
-digest: 08d6f53d74e00af40fa04e8df7c32ae0612c4cc0aa8220d0259420ce317467c9
+digest: 720a019bb32f7d12e1efac8b6cd3694852f5a9d4a2ae566ad40eb56b5cb11c66
 createdAt: "2025-05-05T13:19:13Z"
